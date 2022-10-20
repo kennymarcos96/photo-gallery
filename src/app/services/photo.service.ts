@@ -10,15 +10,32 @@ import { Preferences } from '@capacitor/preferences';
 
 export class PhotoService {
 
+  public photos: UserPhoto[] = [];
+
+  // other code
+
+
   // constructor() { }
 
   public async addNewToGallery() {
-    // Take a photo
+    // Take a photo / Tire uma foto
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100
     });
+
+    this.photos.unshift({
+      filepath: "soon...",
+      webviewPath: capturedPhoto.webPath
+    });
   }
 
+
+}
+
+
+export interface UserPhoto {
+  filepath: string;
+  webviewPath: string;
 }
